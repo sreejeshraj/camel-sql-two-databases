@@ -56,6 +56,7 @@ public class CamelDemoRoute extends RouteBuilder {
 						
 		from("timer://dbQueryTimer?period=10s")
 		.routeId("DATABASE_QUERY_TIMER_ROUTE")
+		//setting constant JSON string {"id":1} as body
 		.setBody(constant("{\"id\":1}"))
 		.unmarshal().json(JsonLibrary.Jackson)
 		.log("After unmarshal body:${body}")
